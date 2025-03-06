@@ -10,7 +10,7 @@ def connect_to_database():
         con = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='Your_password',
+            password='Aadhi@2006123',
             database='DBMS'
         )
         return con
@@ -204,8 +204,7 @@ def main():
     global con
     con = initialize_database()
     if con:
-        # Run the Flask app on port 5008
-        app.run(debug=True, port=5008)
+        app.run(debug=True, port=5009, host='0.0.0.0')
     else:
         print("❌ Failed to connect to the database. Exiting...")
 
