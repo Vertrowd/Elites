@@ -9,8 +9,11 @@ import os
 grocery_items = ["Rice", "Wheat", "Milk", "Eggs", "Soap", "Sugar", "Salt", "Tea", "Coffee", "Oil"]
 
 # Create Database & Table
+# ✅ Create Database & Tables
 conn = sqlite3.connect("inventory.db")
 cursor = conn.cursor()
+
+# Inventory Table
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS inventory (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -20,6 +23,18 @@ cursor.execute("""
         price REAL NOT NULL
     )
 """)
+
+# ✅ Ensure "delivered" table exists
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS delivered (
+        delivery_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        product_id TEXT NOT NULL,
+        name TEXT NOT NULL,
+        qty INTEGER NOT NULL,
+        delivery_date TEXT NOT NULL
+    )
+""")
+
 conn.commit()
 conn.close()
 
@@ -96,12 +111,13 @@ def clear_fields():
 # Function to export data to Excel
 def export_to_excel():
     conn = sqlite3.connect("inventory.db")
-    df = pd.read_sql_query("SELECT * FROM inventory", conn)
+
+    df = pd.read_sql_query("SELECT * FROM inventory", conn)  # ✅ Get latest data from database
     conn.close()
 
     excel_file = "inventory.xlsx"
 
-    # Check if file exists and remove it to avoid permission errors
+    # Ensure file is not open before writing
     if os.path.exists(excel_file):
         try:
             os.remove(excel_file)
@@ -109,9 +125,9 @@ def export_to_excel():
             messagebox.showerror("File Error", "Please close inventory.xlsx before exporting.")
             return
 
-    # Export updated data to Excel
     df.to_excel(excel_file, index=False)
     messagebox.showinfo("Export Successful", "Data exported to inventory.xlsx")
+
 
 # Function to add a new item to the dropdown list
 def add_new_item():
