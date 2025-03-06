@@ -156,6 +156,10 @@ def mark_delivered():
         return redirect(url_for('manage_products'))
     return render_template('mark_delivered.html')
 
+@app.route('/about_us')
+def about_us():
+    return render_template('about_us.html')
+
 @app.route('/view_records', methods=['GET', 'POST'])
 def view_records():
     if request.method == 'POST':

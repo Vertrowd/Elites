@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Products</title>
+    <title>Inventory Auditing System</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -16,9 +16,6 @@
             </div>
             <ul class="navbar__menu">
                 <li class="navbar__item">
-                    <a href="/" class="navbar__links">Home</a>
-                </li>
-                <li class="navbar__item">
                     <a href="/manage_products" class="navbar__links">Manage Products</a>
                 </li>
                 <li class="navbar__item">
@@ -30,24 +27,21 @@
     </nav>
     <div class="main">
         <div class="main__container">
-            <div class="main__content">
-                <h1>Manage Products</h1>
-                <form method="POST">
-                    <label for="choice">Choose an option:</label>
-                    <select id="choice" name="choice">
-                        <option value="1">Add Product</option>
-                        <option value="2">View Products</option>
-                        <option value="3">Mark as Delivered</option>
-                        <option value="4">Back to Main Menu</option>
-                    </select>
-                    <button type="submit" class="main__btn">Submit</button>
-                </form>
-            </div>
-            <div class="main__img--container">
-                <img id="main__img" src="{{ url_for('static', filename='images/prod.png') }}" alt="Main Image">
-            </div>
+          <div class="main__content">
+            <h1>About Us</h1>
+            <p>yipeeeeeeeeeeeeeeee</p>
+            
+          
+          <div class="main__img--container">
+            <img id="main__img" src="{{ url_for('static', filename='images/uss.jpeg') }}" alt="Main Image">
+          </div>
+          <div class="main__img--container">
+            <img id="main__img" src="{{ url_for('static', filename='images/yipee.jpeg') }}" alt="Main Image">
+          </div>
+          </div>
         </div>
-    </div>
-    <script src="{{ url_for('static', filename='app.js') }}"></script>
-</body>
-</html>
+      </div>
+  
+      <script src="app.js"></script>
+    </body>
+  </html>
